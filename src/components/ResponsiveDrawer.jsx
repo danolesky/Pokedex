@@ -11,11 +11,12 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuIcon from "@material-ui/icons/Menu";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import { Close } from "@material-ui/icons";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import PokeImageCard from "./cards/PokeImageCard";
+import PokeImage from "./cards/PokeImage";
 import PokeBase from "./cards/PokeBase";
 
 const drawerWidth = 350;
@@ -23,6 +24,7 @@ const drawerWidth = 350;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    width: "100%",
   },
   drawer: {
     [theme.breakpoints.up("md")]: {
@@ -164,7 +166,7 @@ const ResponsiveDrawer = (props) => {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar style={{ width: "100%" }}>
           {mobileOpen ? (
             <IconButton
               color="inherit"
@@ -186,9 +188,19 @@ const ResponsiveDrawer = (props) => {
               <MenuIcon />
             </IconButton>
           )}
-          <Typography variant="h5" noWrap>
-            Pokédex
+          {/* `flex: 1` need to force GitHubIcon to right of screen */}
+          <Typography variant="h5" noWrap style={{ flex: 1 }}>
+            Dan's Pokédex
           </Typography>
+          <IconButton
+            color="inherit"
+            aria-label="github"
+            edge="end"
+            href="http://github.com/danolesky/Pokedex"
+            target="_blank"
+          >
+            <GitHubIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer}>
@@ -223,7 +235,7 @@ const ResponsiveDrawer = (props) => {
         {pokemon ? (
           <Grid justify="center" container spacing={3}>
             <Grid item xs={12} sm={12} md={11} lg={6} xl={4}>
-              <PokeImageCard pokemon={pokemon} />
+              <PokeImage pokemon={pokemon} />
             </Grid>
             <Grid item xs={12} sm={12} md={11} lg={6} xl={4}>
               <PokeBase pokemon={pokemon} />
