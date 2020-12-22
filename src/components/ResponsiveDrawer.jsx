@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { AppBar, ListItemAvatar, Avatar, Grid } from "@material-ui/core";
+import {
+  AppBar,
+  ListItemAvatar,
+  Avatar,
+  Grid,
+  Button,
+} from "@material-ui/core";
 import TouchRipple from "@material-ui/core/ButtonBase";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Divider from "@material-ui/core/Divider";
@@ -18,13 +24,13 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import PokeImage from "./cards/PokeImage";
 import PokeBase from "./cards/PokeBase";
+import HomeDesc from "./cards/HomeDesc";
 
 const drawerWidth = 350;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    width: "100%",
   },
   drawer: {
     [theme.breakpoints.up("md")]: {
@@ -98,6 +104,10 @@ const ResponsiveDrawer = (props) => {
     setMobileOpen(false);
   };
 
+  const handleTitleClick = () => {
+    setPokemon();
+  };
+
   const getPokemonCard = (pokemonId) => {
     const { id, name, sprite, types } = pokemonList[pokemonId];
     return (
@@ -166,7 +176,7 @@ const ResponsiveDrawer = (props) => {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar style={{ width: "100%" }}>
+        <Toolbar>
           {mobileOpen ? (
             <IconButton
               color="inherit"
@@ -189,7 +199,12 @@ const ResponsiveDrawer = (props) => {
             </IconButton>
           )}
           {/* `flex: 1` need to force GitHubIcon to right of screen */}
-          <Typography variant="h5" noWrap style={{ flex: 1 }}>
+          <Typography
+            variant="h5"
+            noWrap
+            style={{ flex: 1 }}
+            onClick={handleTitleClick}
+          >
             Dan's Pokédex
           </Typography>
           <IconButton
@@ -242,7 +257,11 @@ const ResponsiveDrawer = (props) => {
             </Grid>
           </Grid>
         ) : (
-          <Typography>Select a Pokémans</Typography>
+          <Grid justify="center" container spacing={3}>
+            <Grid item xs={12} sm={12} md={12} lg={10} xl={9}>
+              <HomeDesc />
+            </Grid>
+          </Grid>
         )}
       </main>
     </div>
