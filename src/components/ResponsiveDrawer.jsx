@@ -115,10 +115,7 @@ const ResponsiveDrawer = (props) => {
             </ListItemAvatar>
             <ListItemText
               primary={
-                <Typography
-                  variant="h6"
-                  style={{ textTransform: "capitalize" }}
-                >
+                <Typography style={{ textTransform: "capitalize" }}>
                   {name}
                 </Typography>
               }
@@ -153,7 +150,8 @@ const ResponsiveDrawer = (props) => {
   const drawer = (
     <>
       <div className={classes.toolbar} />
-      <List>
+      {/* Style used to make scroll bar on desktop start below the appbar component */}
+      <List style={{ overflow: "auto" }}>
         {Object.keys(pokemonList).map((pokemonId) => getPokemonCard(pokemonId))}
       </List>
     </>
@@ -194,7 +192,6 @@ const ResponsiveDrawer = (props) => {
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer}>
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden mdUp implementation="css">
           <Drawer
             container={container}
