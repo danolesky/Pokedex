@@ -7,20 +7,9 @@ import {
   ListItem,
   ListSubheader,
   ListItemText,
-  fontWeight,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  desc: {
-    marginLeft: "1.3rem",
-    marginRight: "1.3rem",
-  },
-});
 
 const PokeBase = (props) => {
-  const classes = useStyles();
-
   return (
     <Card>
       <CardContent>

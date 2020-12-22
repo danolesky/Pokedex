@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import PokedexDrawer from "./components/PokedexDrawer";
 import ResponsiveDrawer from "./components/ResponsiveDrawer";
 
 function App() {
