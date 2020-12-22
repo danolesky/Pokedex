@@ -11,6 +11,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuIcon from "@material-ui/icons/Menu";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import { Close } from "@material-ui/icons";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -164,7 +165,7 @@ const ResponsiveDrawer = (props) => {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar style={{ width: "100%" }}>
           {mobileOpen ? (
             <IconButton
               color="inherit"
@@ -186,9 +187,13 @@ const ResponsiveDrawer = (props) => {
               <MenuIcon />
             </IconButton>
           )}
-          <Typography variant="h5" noWrap>
+
+          <Typography variant="h5" noWrap style={{ flex: 1 }}>
             Pokédex
           </Typography>
+          <IconButton color="inherit" aria-label="github" edge="end">
+            <GitHubIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer}>
