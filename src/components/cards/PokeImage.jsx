@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PokeImageCard = (props) => {
+const PokeImage = (props) => {
   const classes = useStyles();
   const pokemon = props.pokemon;
 
@@ -64,4 +64,4 @@ const PokeImageCard = (props) => {
   );
 };
 
-export default PokeImageCard;
+export default PokeImage;
