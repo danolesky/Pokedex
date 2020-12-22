@@ -76,7 +76,7 @@ const HomeDesc = (props) => {
         <Typography
           variant="body2"
           align="center"
-          style={{ paddingTop: ".2rem" }}
+          style={{ paddingTop: ".2rem", paddingBottom: ".5rem" }}
         >
           No copyright or trademark infringement is intended in using Pokémon
           content.
