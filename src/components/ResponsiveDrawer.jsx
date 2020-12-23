@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  AppBar,
-  ListItemAvatar,
-  Avatar,
-  Grid,
-  Button,
-} from "@material-ui/core";
+import { AppBar, ListItemAvatar, Avatar, Grid } from "@material-ui/core";
 import TouchRipple from "@material-ui/core/ButtonBase";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Divider from "@material-ui/core/Divider";
@@ -22,9 +16,9 @@ import { Close } from "@material-ui/icons";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import PokeImage from "./cards/PokeImage";
 import PokeBase from "./cards/PokeBase";
 import HomeDesc from "./cards/HomeDesc";
+import NewPokeImage from "./cards/NewPokeImage";
 
 const drawerWidth = 350;
 
@@ -127,19 +121,24 @@ const ResponsiveDrawer = (props) => {
             </ListItemAvatar>
             <ListItemText
               primary={
-                <Typography style={{ textTransform: "capitalize" }}>
+                <Typography
+                  variant="subtitle1"
+                  style={{ textTransform: "capitalize" }}
+                >
                   {name}
                 </Typography>
               }
               secondary={types.map((type) => {
                 return (
                   <Typography
+                    color="textSecondary"
+                    variant="subtitle2"
                     style={{
                       display: "inline-block",
-                      paddingRight: "0.2rem",
+                      paddingRight: "0.15rem",
                       textTransform: "capitalize",
+                      fontWeight: "400",
                     }}
-                    variant="body2"
                   >
                     {type}
                   </Typography>
@@ -147,8 +146,9 @@ const ResponsiveDrawer = (props) => {
               })}
             />
             <Typography
-              style={{ color: "lightgrey", paddingRight: "1rem" }}
+              color="textSecondary"
               variant="h4"
+              style={{ paddingRight: "1rem", fontWeight: "400" }}
             >
               {id}
             </Typography>
@@ -250,7 +250,7 @@ const ResponsiveDrawer = (props) => {
         {pokemon ? (
           <Grid justify="center" container spacing={3}>
             <Grid item xs={12} sm={12} md={11} lg={6} xl={4}>
-              <PokeImage pokemon={pokemon} />
+              <NewPokeImage pokemon={pokemon} />
             </Grid>
             <Grid item xs={12} sm={12} md={11} lg={6} xl={4}>
               <PokeBase pokemon={pokemon} />

@@ -45,15 +45,15 @@ const HomeDesc = (props) => {
           align="center"
           style={{ paddingTop: ".2rem" }}
         >
-          I strongly recommend utilizing his instead if you're looking for
-          actual useful information.
+          I strongly recommend utilizing his if you're looking for actual useful
+          information.
         </Typography>
         <Typography
           variant="body2"
           align="center"
           style={{ paddingTop: ".2rem" }}
         >
-          Also a special thanks to the Poké API for providing all the Pokémon
+          Also, a special thanks to the Poké API for providing all the Pokémon
           data I'd ever need:
         </Typography>
         <Typography
