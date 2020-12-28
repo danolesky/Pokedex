@@ -9,6 +9,7 @@ import {
   Avatar,
 } from "@material-ui/core";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import TouchRipple from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,98 +32,108 @@ const PokeEvo = (props) => {
     return (
       <>
         {evolution_chain[0].id_to ? (
-          <ListItem
-            divider={true}
-            style={{ justifyContent: "center", alignItems: "center" }}
-          >
-            <ListItemAvatar>
-              <Avatar
-                alt={`pokémon sprite for ${props.pokemon.evolution[0].name_from}`}
-                src={props.pokemon.evolution[0].sprite_from}
-                className={classes.sprite}
-                onClick={() => {
-                  props.handleClick(props.pokemon.evolution[0].id_from);
-                }}
-              />
-            </ListItemAvatar>
-          </ListItem>
+          <TouchRipple style={{ width: "100%" }}>
+            <ListItem
+              divider={true}
+              style={{ justifyContent: "center", alignItems: "center" }}
+              onClick={() => {
+                props.handleClick(props.pokemon.evolution[0].id_from);
+              }}
+            >
+              <ListItemAvatar>
+                <Avatar
+                  alt={`pokémon sprite for ${props.pokemon.evolution[0].name_from}`}
+                  src={props.pokemon.evolution[0].sprite_from}
+                  className={classes.sprite}
+                />
+              </ListItemAvatar>
+            </ListItem>
+          </TouchRipple>
         ) : (
-          <ListItem style={{ justifyContent: "center", alignItems: "center" }}>
-            <ListItemAvatar>
-              <Avatar
-                alt={`pokémon sprite for ${props.pokemon.evolution[0].name_from}`}
-                src={props.pokemon.evolution[0].sprite_from}
-                className={classes.sprite}
-                onClick={() => {
-                  props.handleClick(props.pokemon.evolution[0].id_from);
-                }}
-              />
-            </ListItemAvatar>
-          </ListItem>
+          <TouchRipple style={{ width: "100%" }}>
+            <ListItem
+              style={{ justifyContent: "center", alignItems: "center" }}
+              onClick={() => {
+                props.handleClick(props.pokemon.evolution[0].id_from);
+              }}
+            >
+              <ListItemAvatar>
+                <Avatar
+                  alt={`pokémon sprite for ${props.pokemon.evolution[0].name_from}`}
+                  src={props.pokemon.evolution[0].sprite_from}
+                  className={classes.sprite}
+                />
+              </ListItemAvatar>
+            </ListItem>
+          </TouchRipple>
         )}
         {evolution_chain[0].id_to
           ? evolution_chain.map((chain) => {
               return (
                 <>
                   {count === evolution_chain.length - 1 ? (
-                    <ListItem
-                      style={{ justifyContent: "center", alignItems: "center" }}
-                    >
-                      {increaseCount()}
-                      <ListItemAvatar>
-                        <Avatar
-                          alt={`pokémon sprite for ${chain.name_from}`}
-                          src={chain.sprite_from}
-                          className={classes.sprite}
-                          onClick={() => {
-                            props.handleClick(chain.id_from);
-                          }}
+                    <TouchRipple style={{ width: "100%" }}>
+                      <ListItem
+                        style={{
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                        onClick={() => {
+                          props.handleClick(chain.id_to);
+                        }}
+                      >
+                        {increaseCount()}
+                        <ListItemAvatar>
+                          <Avatar
+                            alt={`pokémon sprite for ${chain.name_from}`}
+                            src={chain.sprite_from}
+                            className={classes.sprite}
+                          />
+                        </ListItemAvatar>
+                        <ArrowRightAltIcon
+                          style={{ color: "rgba(0, 0, 0, 0.54)" }}
                         />
-                      </ListItemAvatar>
-                      <ArrowRightAltIcon
-                        style={{ color: "rgba(0, 0, 0, 0.54)" }}
-                      />
-                      <ListItemAvatar>
-                        <Avatar
-                          alt={`pokémon sprite for ${chain.name_to}`}
-                          src={chain.sprite_to}
-                          className={classes.sprite}
-                          onClick={() => {
-                            props.handleClick(chain.id_to);
-                          }}
-                        />
-                      </ListItemAvatar>
-                    </ListItem>
+                        <ListItemAvatar>
+                          <Avatar
+                            alt={`pokémon sprite for ${chain.name_to}`}
+                            src={chain.sprite_to}
+                            className={classes.sprite}
+                          />
+                        </ListItemAvatar>
+                      </ListItem>
+                    </TouchRipple>
                   ) : (
-                    <ListItem
-                      divider={true}
-                      style={{ justifyContent: "center", alignItems: "center" }}
-                    >
-                      {increaseCount()}
-                      <ListItemAvatar>
-                        <Avatar
-                          alt={`pokémon sprite for ${chain.name_from}`}
-                          src={chain.sprite_from}
-                          className={classes.sprite}
-                          onClick={() => {
-                            props.handleClick(chain.id_from);
-                          }}
+                    <TouchRipple style={{ width: "100%" }}>
+                      <ListItem
+                        divider={true}
+                        style={{
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                        onClick={() => {
+                          props.handleClick(chain.id_to);
+                        }}
+                      >
+                        {increaseCount()}
+                        <ListItemAvatar>
+                          <Avatar
+                            alt={`pokémon sprite for ${chain.name_from}`}
+                            src={chain.sprite_from}
+                            className={classes.sprite}
+                          />
+                        </ListItemAvatar>
+                        <ArrowRightAltIcon
+                          style={{ color: "rgba(0, 0, 0, 0.54)" }}
                         />
-                      </ListItemAvatar>
-                      <ArrowRightAltIcon
-                        style={{ color: "rgba(0, 0, 0, 0.54)" }}
-                      />
-                      <ListItemAvatar>
-                        <Avatar
-                          alt={`pokémon sprite for ${chain.name_to}`}
-                          src={chain.sprite_to}
-                          className={classes.sprite}
-                          onClick={() => {
-                            props.handleClick(chain.id_to);
-                          }}
-                        />
-                      </ListItemAvatar>
-                    </ListItem>
+                        <ListItemAvatar>
+                          <Avatar
+                            alt={`pokémon sprite for ${chain.name_to}`}
+                            src={chain.sprite_to}
+                            className={classes.sprite}
+                          />
+                        </ListItemAvatar>
+                      </ListItem>
+                    </TouchRipple>
                   )}
                 </>
               );
