@@ -19,6 +19,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import PokeBase from "./cards/PokeBase";
 import HomeDesc from "./cards/HomeDesc";
 import NewPokeImage from "./cards/NewPokeImage";
+import PokeEvo from "./cards/PokeEvo";
 
 const drawerWidth = 350;
 
@@ -76,13 +77,14 @@ const ResponsiveDrawer = (props) => {
       const pokemonList = {};
       pokedex.forEach((pokemon, index) => {
         pokemonList[index + 1] = {
-          id: index + 1,
+          id: pokemon.id,
           name: pokemon.name,
           url: pokemon.url,
           sprite: pokemon.sprite,
           art: pokemon.art,
           types: pokemon.types,
           baseStats: pokemon.base_stats,
+          evolution: pokemon.evolution_chain,
         };
       });
       setPokemonList(pokemonList);
@@ -93,8 +95,8 @@ const ResponsiveDrawer = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleClick = (pokemon) => {
-    setPokemon(pokemon);
+  const handleClick = (id) => {
+    setPokemon(pokemonList[id]);
     setMobileOpen(false);
   };
 
@@ -109,7 +111,7 @@ const ResponsiveDrawer = (props) => {
         <TouchRipple style={{ width: "100%" }}>
           <ListItem
             onClick={() => {
-              handleClick(pokemonList[pokemonId]);
+              handleClick(id);
             }}
           >
             <ListItemAvatar>
@@ -251,6 +253,9 @@ const ResponsiveDrawer = (props) => {
           <Grid justify="center" container spacing={3}>
             <Grid item xs={12} sm={12} md={11} lg={6} xl={4}>
               <NewPokeImage pokemon={pokemon} />
+            </Grid>
+            <Grid item xs={12} sm={12} md={11} lg={6} xl={4}>
+              <PokeEvo pokemon={pokemon} handleClick={handleClick} />
             </Grid>
             <Grid item xs={12} sm={12} md={11} lg={6} xl={4}>
               <PokeBase pokemon={pokemon} />
